@@ -46,4 +46,10 @@ interface MenuInterface extends ConvertibleToArrayInterface
      * @throws MenuException
      */
     function setGroup_menus(array $sub_menus);
+
+    /**
+     * Get all menu items count in deep
+     * @return int
+     */
+    function getMenuItemsCount();
 } 
