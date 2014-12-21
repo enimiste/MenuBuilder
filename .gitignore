@@ -45,3 +45,11 @@ crashlytics.properties
 crashlytics-build.properties
 
 
+vendor/autoload.php
+vendor/composer/ClassLoader.php
+vendor/composer/autoload_classmap.php
+vendor/composer/autoload_namespaces.php
+vendor/composer/autoload_psr4.php
+vendor/composer/autoload_real.php
+menu_builder.php
+test/test.php
