@@ -9,6 +9,7 @@
 namespace Nouni\Menu\Api\Menu;
 
 use Nouni\Menu\Api\ConvertibleToArrayInterface;
+use Nouni\Menu\Api\Exception\MenuException;
 use Nouni\Menu\Api\Permission\PermissionInterface;
 use Nouni\Menu\Api\VisibilityInterface;
 
@@ -43,12 +44,19 @@ interface SubMenuInterface extends PermissionInterface, ConvertibleToArrayInterf
     /**
      * @param SubMenuInterface $submenu
      * @return SubMenuInterface for chaining
+     * @throws MenuException
      */
     function addSub_menu(SubMenuInterface $submenu);
 
     /**
      * @param MenuItemInterface $item
      * @return SubMenuInterface for chaining
+     * @throws MenuException
      */
     function add_menu_item(MenuItemInterface $item);
+
+    /**
+     * @return array ana array of MenuItemInterface object
+     */
+    function getMenu_items();
 } 
