@@ -125,7 +125,10 @@ composer.phar install
  //afficher le menu au format tableau
  print_r($menu->to_array());
  print_r($menu_filtered->to_array());
+ ```
  The result after execution is :
+ 
+ ```php
  Array
  (
      [nom] => Menu principale
