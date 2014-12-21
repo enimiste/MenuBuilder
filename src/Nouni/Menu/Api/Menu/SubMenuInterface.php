@@ -59,4 +59,10 @@ interface SubMenuInterface extends PermissionInterface, ConvertibleToArrayInterf
      * @return array ana array of MenuItemInterface object
      */
     function getMenu_items();
+
+    /**
+     * Get all menu group items count in deep
+     * @return int
+     */
+    function getMenuItemsCount();
 } 
