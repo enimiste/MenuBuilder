@@ -157,7 +157,7 @@ class MenuGroup implements MenuGroupInterface
      */
     function set_visibility($value)
     {
-        $this->visibility = boolval($value);
+        $this->visibility = $value;
     }
 
     /**
@@ -165,6 +165,8 @@ class MenuGroup implements MenuGroupInterface
      */
     function to_array()
     {
+        if(!$this->is_visible()) return array();
+
         $sub_menus = array_map(function (SubMenuInterface $item) {
             return $item->to_array();
         }, array_filter($this->getSub_menus(), function (SubMenuInterface $item) {
@@ -191,5 +193,20 @@ class MenuGroup implements MenuGroupInterface
     function getMenu_items()
     {
         return iterator_to_array($this->menu_items);
+    }
+
+    /**
+     * Get all menu group items count in deep
+     * @return int
+     */
+    function getMenuItemsCount()
+    {
+        $f = array_filter($this->getMenu_items(), function (MenuItemInterface $item) {
+            return $item->is_visible();
+        });
+
+        return count($f) + array_reduce($this->getSub_menus(), function ($acc, SubMenuInterface $sub_menu) {
+            return $sub_menu->is_visible() ? $acc + $sub_menu->getMenuItemsCount() : $acc;
+        }, 0);
     }
 }
