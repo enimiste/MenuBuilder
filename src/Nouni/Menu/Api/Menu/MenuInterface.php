@@ -21,6 +21,7 @@ interface MenuInterface extends ConvertibleToArrayInterface
     /**
      * @param MenuGroupInterface $groupe
      * @return MenuInterface for chaining
+     * @throws MenuException
      */
     function add_menu_group(MenuGroupInterface $groupe);
 
