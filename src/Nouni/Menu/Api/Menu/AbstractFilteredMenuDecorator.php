@@ -70,8 +70,61 @@ abstract class AbstractFilteredMenuDecorator implements MenuInterface
     function to_array()
     {
         $m = $this->filter->do_filter($this->menu);
-        $this->setNom($m->getNom());
-        $this->setGroup_menus($m->getGroup_menus());
         return $m->to_array();
+    }
+
+    /**
+     * @param MenuGroupInterface $groupe
+     * @return MenuInterface for chaining
+     * @throws MenuException
+     */
+    function add_menu_group(MenuGroupInterface $groupe)
+    {
+        $this->menu->add_menu_group($groupe);
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    function getNom()
+    {
+        return $this->menu->getNom();
+    }
+
+    /**
+     * @param string $nom
+     */
+    function setNom($nom)
+    {
+        $this->menu->setNom($nom);
+    }
+
+    /**
+     * @return array array of MenuGroupInterface object
+     */
+    function getGroup_menus()
+    {
+        return $this->menu->getGroup_menus();
+    }
+
+    /**
+     * @param array $sub_menus an array of MenuGroupInterface object
+     * @return MenuInterface for chaining
+     * @throws MenuException
+     */
+    function setGroup_menus(array $sub_menus)
+    {
+        $this->menu->setGroup_menus($sub_menus);
+        return $this;
+    }
+
+    /**
+     * Get all menu items count in deep
+     * @return int
+     */
+    function getMenuItemsCount()
+    {
+        return $this->menu->getMenuItemsCount();
     }
 } 
