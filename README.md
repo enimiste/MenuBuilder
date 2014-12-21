@@ -1,7 +1,8 @@
 #Php Menu Builder :
 - A composer module that lets you build menus easily. Its support permissions, database loading
 - To use the module you should run the command :
- ```php composer.phar install 
+ ```php
+composer.phar install 
  ``` 
 - You can implement your MenuLoader and Filter
 
