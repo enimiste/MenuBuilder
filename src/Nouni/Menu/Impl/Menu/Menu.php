@@ -32,11 +32,15 @@ class Menu implements MenuInterface
 
     /**
      * @param MenuGroupInterface $groupe
+     * @throws MenuException
      * @return MenuInterface for chaining
      */
     function add_menu_group(MenuGroupInterface $groupe)
     {
+        if ($this->groupe_menus->contains($groupe))
+            throw new MenuException('Le groupe menu existe déjà');
         $this->groupe_menus->attach($groupe);
+        return $this;
     }
 
     /**
@@ -75,6 +79,7 @@ class Menu implements MenuInterface
                 throw new MenuException("Les sous menu du Menu doivent être des instances de l'interface MenuGroupInterface");
         });
         $this->groupe_menus = new \SplObjectStorage($sub_menus);
+        return $this;
     }
 
     /**
@@ -82,11 +87,14 @@ class Menu implements MenuInterface
      */
     function to_array()
     {
-        $filtred = array_filter($this->getGroup_menus(), function (MenuGroupInterface $item) {
+        $filtered = array_filter($this->getGroup_menus(), function (MenuGroupInterface $item) {
             return $item->is_visible();
         });
-        return array_map(function (MenuGroupInterface $item) {
-            return $item->to_array();
-        }, $filtred);
+        return array(
+            'nom' => $this->nom,
+            'groups' => array_map(function (MenuGroupInterface $item) {
+                return $item->to_array();
+            }, $filtered)
+        );
     }
 }
