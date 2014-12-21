@@ -1,0 +1,17 @@
+{
+    "name": "nouni/menu",
+    "description": "Hierarchical Menu builder with permissions support",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Nouni EL BACHIR",
+            "email": "nouni.elbachir@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Nouni\\": "src"
+        }
+    }
+}
