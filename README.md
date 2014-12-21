@@ -176,7 +176,7 @@ composer.phar install
  )
  ``` 
  ## Menu Loader that use a database
- ```
+ ```php
  require_once '../vendor/autoload.php';
  use \Nouni\Menu\Impl\Menu\Menu;
  use \Nouni\Menu\Api\Menu\MenuInterface;
