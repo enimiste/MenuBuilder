@@ -96,7 +96,7 @@ class MenuItem implements MenuItemInterface
      */
     function set_visibility($value)
     {
-        $this->visibility = boolval($value);
+        $this->visibility = $value;
     }
 
     /**
