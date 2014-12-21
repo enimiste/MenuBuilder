@@ -4,7 +4,7 @@
 
 #Example :
 ## Without using a loader and no filter
- ``require_once '../vendor/autoload.php';
+ ```require_once '../vendor/autoload.php';
  //Menu principale
  $m = new \Nouni\Menu\Impl\Menu\Menu();
  $m->setNom('Menu principale');
