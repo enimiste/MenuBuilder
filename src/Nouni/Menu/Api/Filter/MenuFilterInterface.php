@@ -21,6 +21,7 @@ interface MenuFilterInterface
     /**
      *
      * @param MenuInterface $menu
+     * @throws MenuException
      * @return MenuInterface filtered
      */
     function do_filter(MenuInterface $menu);
