@@ -97,4 +97,15 @@ class Menu implements MenuInterface
             }, $filtered)
         );
     }
+
+    /**
+     * Get all menu items count in deep
+     * @return int
+     */
+    function getMenuItemsCount()
+    {
+        return array_reduce($this->getGroup_menus(), function ($acc, MenuGroupInterface $group) {
+            return $acc + $group->getMenuItemsCount();
+        }, 0);
+    }
 }
