@@ -4,7 +4,8 @@
 
 #Example :
 ## Without using a loader and no filter
- ```require_once '../vendor/autoload.php';
+ ```
+ require_once '../vendor/autoload.php';
  //Menu principale
  $m = new \Nouni\Menu\Impl\Menu\Menu();
  $m->setNom('Menu principale');
@@ -22,7 +23,8 @@
  $m->add_menu_group($g1);
  
  //afficher le menu au format tableau
- print_r($m->to_array());```
+ print_r($m->to_array());
+ ```
  
  ##Using Menu loader
  ##Using Menu Filter
