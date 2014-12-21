@@ -8,6 +8,7 @@
 
 namespace Nouni\Menu\Api\Loader;
 
+use Nouni\Menu\Api\Exception\MenuException;
 use Nouni\Menu\Api\Menu\MenuInterface;
 
 /**
@@ -19,6 +20,7 @@ interface MenuLoaderInterface
 {
     /**
      * @return MenuInterface
+     * @throws MenuException
      */
     function load();
 } 
