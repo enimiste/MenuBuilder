@@ -11,11 +11,11 @@ namespace Nouni\Menu\Api\Menu;
 use Nouni\Menu\Api\Filter\MenuFilterInterface;
 
 /**
- * Interface AbstractFilteredMenuDecorator
+ * class FilteredMenuDecorator
  * @package Nouni\Menu\Api
  * @author NOUNI EL BACHIR
  */
-abstract class AbstractFilteredMenuDecorator implements MenuInterface
+class FilteredMenuDecorator implements MenuInterface
 {
     /**
      * @var MenuInterface
@@ -29,7 +29,7 @@ abstract class AbstractFilteredMenuDecorator implements MenuInterface
     function __construct(MenuInterface $menu, MenuFilterInterface $filter)
     {
         $this->filter = $filter;
-        $this->menu = $menu;
+        $this->menu = $filter->do_filter($menu);
     }
 
     /**
@@ -69,8 +69,7 @@ abstract class AbstractFilteredMenuDecorator implements MenuInterface
      */
     function to_array()
     {
-        $m = $this->filter->do_filter($this->menu);
-        return $m->to_array();
+        return $this->menu->to_array();
     }
 
     /**
