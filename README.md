@@ -85,7 +85,7 @@ composer.phar install
  use \Nouni\Menu\Api\Loader\MenuLoaderInterface;
  use \Nouni\Menu\Api\Exception\MenuException;
  use \Nouni\Menu\Impl\Filter\FilterBasedOnPermission;
- use \Nouni\Menu\Impl\Menu\FilteredMenuDecorator;
+ use \Nouni\Menu\Api\Menu\FilteredMenuDecorator;
  
  class StaticMenuLoader implements MenuLoaderInterface
  {
@@ -178,46 +178,13 @@ composer.phar install
  ## Menu Loader that use a database
  ```php
  require_once '../vendor/autoload.php';
- use \Nouni\Menu\Impl\Menu\Menu;
- use \Nouni\Menu\Api\Menu\MenuInterface;
- use \Nouni\Menu\Api\Loader\MenuLoaderInterface;
- use \Nouni\Menu\Api\Exception\MenuException;
- use \Nouni\Menu\Impl\Filter\FilterBasedOnPermission;
- use \Nouni\Menu\Impl\Menu\FilteredMenuDecorator;
+ use \Nouni\Menu\Impl\Loader\DBMenuLoader;
  
- class DBMenuLoader implements MenuLoaderInterface
- {
- 
-     /**
-      * @var int
-      */
-     protected $userId;
- 
-     function __construct($userId)
-     {
-         $this->userId = $userId;
-     }
- 
-     /**
-      * @return MenuInterface
-      * @throws MenuException
-      */
-     function load()
-     {
-         $m = new Menu();//Menu principale
-         $permissions = array();
-         //TODO :  Connect to the database, load the menu groups and items and build the menu dynamically
-         //TODO : load the list of permissions that the user had
-         $filter = new FilterBasedOnPermission($permissions);
-         $m_filtered = new FilteredMenuDecorator($m, $filter);
-         return $m_filtered;
-     }
- }
  /*
   * given a logged in user whose ID is 12
   */
- $menu_loader = new DBMenuLoader(12);
+ $menu_loader = new DBMenuLoader(12, 'DBNAME', 'USERNAME', 'PASSWORD');
  $menu = $menu_loader->load();
  //afficher le menu au format tableau
- print_r($menu_filtered->to_array());
+ print_r($menu->to_array());
  ```
