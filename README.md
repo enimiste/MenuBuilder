@@ -190,4 +190,5 @@ composer.phar install
  ```
  
  ## Diagramme UML
+ 
  [Click here to view the UML diagram](https://raw.githubusercontent.com/enimiste/MenuBuilder/dev/diagram.png "This diagram is generated using PHPStorm IDE")
