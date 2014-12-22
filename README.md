@@ -188,3 +188,6 @@ composer.phar install
  //afficher le menu au format tableau
  print_r($menu->to_array());
  ```
+ 
+ ## Diagramme UML
+ [Click here to view the UML diagram](https://raw.githubusercontent.com/enimiste/MenuBuilder/dev/diagram.png "This diagram is generated using PHPStorm IDE")
